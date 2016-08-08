@@ -6,7 +6,7 @@ var _ = require('ramda');
 //==============
 // Refactor to remove all arguments by partially applying the function
 
-var words = _.split(' ');////////////////////////////////////////////////////////
+var words = _.split(' ');
 
 // Exercise 1a
 //==============
@@ -30,10 +30,9 @@ var filterQs = _.filter(startsWithQ);
 var _keepHighest = function(x,y){ return x >= y ? x : y; };
 
 // REFACTOR THIS ONE:
-var max = function(xs) {
-  return reduce(function(acc, x){
-    return _keepHighest(acc, x);
-  }, -Infinity, xs);
+var max = function(numbers) {
+  if (numbers.length === 1) { return numbers[0] }
+  return _keepHighest(numbers[0], max(_.tail(numbers)));
 };
 
   
@@ -41,7 +40,7 @@ var max = function(xs) {
 // ============
 // wrap array's slice to be functional and curried.
 // //[1,2,3].slice(0, 2)
-var slice = undefined;
+var slice = _.curry(slice);
 
 
 // Bonus 2:
