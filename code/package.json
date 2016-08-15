@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "ramda": "^0.13.0",
+    "accounting": "*",
     "chai": "*",
     "mocha": "*"
   },
